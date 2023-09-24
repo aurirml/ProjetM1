@@ -10,56 +10,48 @@ pub(crate) fn futurcoup() -> String {
     coup.trim().to_string()
 }
 
-pub(crate) fn coup(a: &str) -> String {
+pub(crate) fn coup(a: &str) -> (usize, usize){
     let mut colonne = 0;
-    let mut ligne: i32 = 0;
+    let mut ligne  = 0;
 
-    let mut tir = String::new();
-
-    let mut coup = Vec::new();
+    let coup = Vec::from(a);
 
     let c = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
     let l = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 
-    for character in a.chars() {
-        coup.push(character);
-    }
-
-    for _item in &coup {
-        if coup.len() == 3 {
-            for character in a.chars() {
-                for i in 0..10 {
-                    if character.to_string() == c[i] {
-                        colonne = i;
-                        break;
-                    }
-                }
-            }
-            ligne = 9;
-        } else {
-            for character in a.chars() {
-                for i in 0..10 {
-                    if character.to_string() == c[i] {
-                        colonne = i;
-                        break;
-                    }
-                }
-
-                for j in 0..10 {
-                    if character.to_string() == l[j] {
-                        ligne = j as i32;
-                        break;
-                    }
+    if coup.len() == 3 {
+        for character in a.chars() {
+            for i in 0..10 {
+                if character.to_string() == c[i] {
+                    colonne = i;
+                    break;
                 }
             }
         }
+        ligne = 9;
+    } else {
+        for character in a.chars() {
+            for i in 0..10 {
+                if character.to_string() == c[i] {
+                    colonne = i;
+                    break;
+                }
+                else{
+                    println!("Coup invalide");
+                }
+            }
 
-        let c = colonne.to_string();
-        let l = ligne.to_string();
-
-        tir = c + &l;
-
+            for j in 0..10 {
+                if character.to_string() == l[j] {
+                    ligne = j;
+                    break;
+                }
+                else{
+                    println!("Coup invalide !")
+                }
+            }
+        }
     }
 
-    return tir;
+    (ligne, colonne)
 }

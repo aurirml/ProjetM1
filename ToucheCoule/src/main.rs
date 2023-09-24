@@ -1,17 +1,30 @@
 use action::futurcoup;
 
-mod init;
 mod action;
+mod init;
+mod modifmatrice;
 
 fn main() {
-    let _tab_j1int: [i32;100]=[0;100];
-    let _tab_j1str: [&str;100]=["x";100];
-    let _tab_j2int: [i32;100]=[0;100];
-    let _tab_j2str: [&str;100]=[" ";100];
-    init::display_tab_int(&_tab_j1int);
-    init::display_tab_str(&_tab_j1str);
+    let mut matrice = init::display_tab_int();
 
-    let coup = action::futurcoup();
-    let tir = coup(&coup);
-    
+    let mut i = 0;
+
+    loop {
+        let coup = futurcoup();
+        let tir = action::coup(&coup);
+
+        modifmatrice::modif(tir.1, tir.0, &mut matrice);
+
+        for row in &matrice {
+            for &element in row {
+                print!("{} ", element);
+            }
+            println!(); // Passer à la ligne suivante pour la prochaine ligne de la matrice
+        }
+        i += 1;
+
+        if i >= 10{
+            return;
+        }
+    }
 }
