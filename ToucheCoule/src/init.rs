@@ -1,37 +1,36 @@
-pub(crate) fn display_tab_int(tab: &[i32]){
-    let mut i=0;
-    let v = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
-    for value in v{
-        print!("\t {}", value);
-    }
-    println!("");
-    println!("");
-    while i<100 {
-        print!("{} \t", ((i+ 10)/10));
-        for _j in 0..10{
-            print!("[{}] \t",tab[i]);
-            i +=1; 
+pub(crate) fn display_tab_int() -> Vec<Vec<i32>> {
+    let matrix = vec![vec![0; 10]; 10];
+
+    for row in &matrix {
+        for &element in row {
+            print!("{} ", element);
         }
-        println!(" \n");
+        println!();
     }
-    println!(" ");
+
+    matrix 
 }
 
-pub(crate) fn display_tab_str(tab: &[&str]){
-    let mut i=0;
+/* 
+pub(crate) fn display_tab_str(tab: &[&str]) {
     let v = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
-    for value in v{
-        print!("\t {}", value);
+
+    // Afficher la première ligne avec les lettres
+    for value in &v {
+        print!("\t{}", value);
     }
-    println!("");
-    println!("");
-    while i<100 {
-        print!("{} \t", ((i+ 10)/10));
-        for _j in 0..10{
-            print!("[{}] \t",tab[i]);
-            i +=1; 
+    println!("\n");
+
+    let mut i = 0;
+    while i < 100 {
+        print!("{}\t", (i + 10) / 10);
+
+        for _j in 0..10 {
+            print!("[{}]\t", tab[i as usize]);
+            i += 1;
         }
-        println!(" \n");
+        println!("\n");
     }
-    println!(" ");
+    println!("");
 }
+*/
