@@ -1,5 +1,6 @@
 fn display_tab_int(tab: &[i32]){
     let mut i=0;
+
     let v = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
     for value in v{
         print!("\t {}", value);
@@ -13,6 +14,12 @@ fn display_tab_int(tab: &[i32]){
             i +=1; 
         }
         println!(" \n");
+      while i<100 {
+        for _j in 0..10 {
+            print!("[{}]",tab[i]);
+            i +=1; 
+        }
+        println!(" ");
     }
     println!(" ");
 }
@@ -32,6 +39,12 @@ fn display_tab_str(tab: &[&str]){
             i +=1; 
         }
         println!(" \n");
+    while i<100 {
+        for _j in 0..10 {
+            print!("[{}]",tab[i]);
+            i +=1; 
+        }
+        println!(" ");
     }
     println!(" ");
 }
